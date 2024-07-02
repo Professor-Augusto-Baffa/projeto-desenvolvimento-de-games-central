@@ -1,0 +1,325 @@
+[gd_scene load_steps=39 format=3 uid="uid://dd2kf6tbyd57t"]
+
+[ext_resource type="Texture2D" uid="uid://dv5wg0m3ta4sy" path="res://Assets/Sprites/Enemy/SlimeA.png" id="1_8desv"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_tnlp8"]
+[ext_resource type="Script" path="res://Scripts/Resources/StatResource.cs" id="2_h037d"]
+[ext_resource type="PackedScene" uid="uid://kdfm8th232sp" path="res://Scenes/Characters/state_machine.tscn" id="2_wsvqs"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyIdleState.cs" id="3_2p1fj"]
+[ext_resource type="Shader" path="res://Shaders/character_hurt.gdshader" id="3_gwam2"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyReturnState.cs" id="5_eurmp"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyPatrolState.cs" id="6_g54re"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyChaseState.cs" id="7_l2j8h"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyAttackState.cs" id="8_vsjsp"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyDeathState.cs" id="10_yy6yp"]
+
+[sub_resource type="Resource" id="Resource_0kde5"]
+script = ExtResource("2_h037d")
+StatType = 0
+StatValue = 20.0
+
+[sub_resource type="Resource" id="Resource_gstej"]
+script = ExtResource("2_h037d")
+StatType = 1
+StatValue = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oml4r"]
+resource_local_to_scene = true
+shader = ExtResource("3_gwam2")
+shader_parameter/active = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ottj"]
+atlas = ExtResource("1_8desv")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_westc"]
+atlas = ExtResource("1_8desv")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rra2n"]
+atlas = ExtResource("1_8desv")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd6ln"]
+atlas = ExtResource("1_8desv")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nribn"]
+atlas = ExtResource("1_8desv")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nxif"]
+atlas = ExtResource("1_8desv")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3smp"]
+atlas = ExtResource("1_8desv")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_605ba"]
+atlas = ExtResource("1_8desv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3oed"]
+atlas = ExtResource("1_8desv")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uj6jn"]
+atlas = ExtResource("1_8desv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06i8o"]
+atlas = ExtResource("1_8desv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bg4r"]
+atlas = ExtResource("1_8desv")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwal1"]
+atlas = ExtResource("1_8desv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erys3"]
+atlas = ExtResource("1_8desv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hepe4"]
+atlas = ExtResource("1_8desv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kufgu"]
+atlas = ExtResource("1_8desv")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t2h5"]
+atlas = ExtResource("1_8desv")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35jtx"]
+atlas = ExtResource("1_8desv")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_en7pi"]
+atlas = ExtResource("1_8desv")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x45u7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ottj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_westc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rra2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd6ln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nribn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nxif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3smp")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_605ba")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_605ba")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_605ba")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3oed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uj6jn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3oed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06i8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06i8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uj6jn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3oed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bg4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bg4r")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwal1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erys3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hepe4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kufgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t2h5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35jtx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_en7pi")
+}],
+"loop": true,
+"name": &"move",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_egonx"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6swrp"]
+radius = 82.0244
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_67kxd"]
+radius = 14.1421
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcrc7"]
+size = Vector2(12, 14)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("AnimSpriteNode", "StateMachineNode", "HurtboxNode", "HitboxNode", "HitBoxShapeNode", "shaderTimerNode", "NavAgentNode", "ChaseAreaNode", "AttackAreaNode")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_tnlp8")
+stats = Array[Object]([SubResource("Resource_0kde5"), SubResource("Resource_gstej")])
+AnimSpriteNode = NodePath("AnimatedSprite2D")
+StateMachineNode = NodePath("StateMachine")
+HurtboxNode = NodePath("Hurtbox")
+HitboxNode = NodePath("Hitbox")
+HitBoxShapeNode = NodePath("Hitbox/CollisionShape2D")
+shaderTimerNode = NodePath("ShaderTimer")
+NavAgentNode = NodePath("NavigationAgent2D")
+ChaseAreaNode = NodePath("ChaseArea")
+AttackAreaNode = NodePath("AttackArea")
+speed = 20.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_oml4r")
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_x45u7")
+animation = &"death"
+frame = 4
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_egonx")
+debug_color = Color(0.172549, 0.996078, 0, 0.419608)
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("2_wsvqs")]
+currentState = NodePath("IdleState")
+states = [NodePath("IdleState"), NodePath("ReturnState"), NodePath("PatrolState"), NodePath("ChaseState"), NodePath("AttackState"), NodePath("DeathState")]
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("3_2p1fj")
+
+[node name="ReturnState" type="Node" parent="StateMachine"]
+script = ExtResource("5_eurmp")
+
+[node name="PatrolState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idleTimerNode")]
+script = ExtResource("6_g54re")
+idleTimerNode = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/PatrolState"]
+one_shot = true
+
+[node name="ChaseState" type="Node" parent="StateMachine" node_paths=PackedStringArray("timerNode")]
+script = ExtResource("7_l2j8h")
+timerNode = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/ChaseState"]
+wait_time = 0.2
+autostart = true
+
+[node name="AttackState" type="Node" parent="StateMachine"]
+script = ExtResource("8_vsjsp")
+
+[node name="DeathState" type="Node" parent="StateMachine"]
+script = ExtResource("10_yy6yp")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 1.0
+debug_enabled = true
+
+[node name="ChaseArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea"]
+shape = SubResource("CircleShape2D_6swrp")
+debug_color = Color(0.215188, 0.578649, 0.742579, 0.42)
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_67kxd")
+debug_color = Color(0.854672, 0.314741, 0.500012, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, 1)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_egonx")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_vcrc7")
+disabled = true
+
+[node name="ShaderTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true

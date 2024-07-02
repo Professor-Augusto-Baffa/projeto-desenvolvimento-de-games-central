@@ -1,52 +1,43 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
-public partial class player : CharacterBody2D
+public partial class Player : Character
 {
-	public const float speed = 100f;
-	
-	public Vector2 direction = new();
-
-	[Export] AnimatedSprite2D anim;
-
-	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	[Export] private PointLight2D lightNode;
 
 	public override void _Ready()
 	{
-		anim.Play("idle");
-	}
-	
-	public override void _PhysicsProcess(double delta)
-	{
-		Velocity = new(direction.X, direction.Y);
-		Velocity *= speed;
+		base._Ready();
+		lightNode ??= GetChild<PointLight2D>(0);
 
-		MoveAndSlide();
+		GameEvents.OnNightEnter += HandleNightEnter;
+		GameEvents.OnNightExit += HandleNightExit;
+		GameEvents.OnEnemyDeath += HandleEnemyDeath;
 	}
-	public override void _Input(InputEvent @event)
-	{
-		anim.Play("run");
 
+    private void HandleNightExit()
+    {
+        lightNode.Enabled = false;
+    }
+
+    private void HandleNightEnter()
+    {
+        lightNode.Enabled = true;
+    }
+
+    public override void _Input(InputEvent @event)
+	{
 		direction = Input.GetVector(
-			"MoveLeft",
-			"MoveRight",
-			"MoveUp",
-			"MoveDown"
+			GameConstants.INPUT_MOVE_LEFT,
+			GameConstants.INPUT_MOVE_RIGHT,
+			GameConstants.INPUT_MOVE_FORWARD,
+			GameConstants.INPUT_MOVE_BACKWARD
 		);
-		if (direction == Vector2.Zero)
-		{
-			anim.Play("idle");
-		}
-		else{
-			if (direction.X < 0)
-			{
-				anim.FlipH = true;
-			}
-			else if (direction.X > 0)
-			{
-				anim.FlipH = false;
-			}
-		}
+	}
+
+	private void HandleEnemyDeath(int reward)
+	{
+		GetStatResource(Stat.Gold).StatValue += reward;
 	}
 }

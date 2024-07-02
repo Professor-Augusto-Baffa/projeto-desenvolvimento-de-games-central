@@ -1,0 +1,21 @@
+[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://j236rv4uobcw"]
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_858ph"]
+parameter_name = "BooleanParameter"
+
+[sub_resource type="VisualShaderNodeColorOp" id="VisualShaderNodeColorOp_ct85n"]
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(1020, 220)
+nodes/fragment/2/node = SubResource("VisualShaderNodeBooleanParameter_858ph")
+nodes/fragment/2/position = Vector2(140, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeColorOp_ct85n")
+nodes/fragment/3/position = Vector2(600, 460)
