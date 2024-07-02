@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/General/Camera.cs" id="12_fhkgf"]
 [ext_resource type="Shader" path="res://Shaders/character_hurt.gdshader" id="12_pa6id"]
 [ext_resource type="Script" path="res://Scripts/General/DayNight.cs" id="15_omx0y"]
-[ext_resource type="PackedScene" path="res://Scenes/General/torch.tscn" id="16_56udf"]
+[ext_resource type="PackedScene" uid="uid://7es5lg2ssm8j" path="res://Scenes/General/torch.tscn" id="16_56udf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4dw40"]
 vertices = PackedVector2Array(235, 206, 230, 206, 230, 150, 236, 150, -214, -38, -234, -38, -234, -110, -214, -110, 74, -138, 160, -138, 160, -118, 22, -118, 22, -154, 74, -154, 74, -230, -44, -230, -44, -238, 74, -238, 214, 118, 198, 118, 26, 54, 26, 22, 26, 6, 26, -26, 214, -86, -10, -86, -58, -26, 134, -214, 134, -170, 106, -170, 106, -186, -10, 22, -10, 54, -22, 54, -22, 22, 198, 182, -294, 182, -58, 54, -294, -86, -266, -86, -266, -6, -182, -6, -58, 22, -182, -86, -22, -86, 106, -198, 106, -214, -10, -186, -22, -198, -58, 6)

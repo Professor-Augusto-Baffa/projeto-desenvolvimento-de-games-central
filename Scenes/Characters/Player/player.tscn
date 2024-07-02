@@ -1,11 +1,15 @@
-[gd_scene load_steps=41 format=3 uid="uid://dwpqcrjh4gljr"]
+[gd_scene load_steps=45 format=3 uid="uid://dwpqcrjh4gljr"]
 
+[ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_sb2id"]
+[ext_resource type="Resource" uid="uid://bs4pxuc4sh0mq" path="res://Resources/player_health_stat.tres" id="2_khqe6"]
 [ext_resource type="Texture2D" uid="uid://vwqh6014oxpb" path="res://Assets/Sprites/Player/SPA_Player_Ginger.png" id="2_nwsqx"]
 [ext_resource type="Texture2D" uid="uid://dwgde2er8lby6" path="res://Assets/Sprites/Player/SPA_Player_Ginger-Sheet.png" id="3_72i7p"]
 [ext_resource type="PackedScene" uid="uid://kdfm8th232sp" path="res://Scenes/Characters/state_machine.tscn" id="3_bmq22"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerIdleState.cs" id="3_id5mo"]
+[ext_resource type="Resource" uid="uid://dl7pa6yblu1ov" path="res://Resources/player_strength_stat.tres" id="3_jxc54"]
 [ext_resource type="Shader" path="res://Shaders/character_hurt.gdshader" id="4_3v1c0"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerMoveState.cs" id="4_g1fmq"]
+[ext_resource type="Resource" uid="uid://rvasvh2djnac" path="res://Resources/player_gold.tres" id="4_hiecx"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="5_j03dy"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerAttackState.cs" id="7_eocyb"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDeathState.cs" id="10_ur0go"]
@@ -234,10 +238,19 @@ gradient = SubResource("Gradient_a2fh4")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("lightNode", "AnimSpriteNode", "StateMachineNode", "HurtboxNode", "HitboxNode", "HitBoxShapeNode", "shaderTimerNode")]
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 5
+script = ExtResource("1_sb2id")
+lightNode = NodePath("PointLight2D")
+stats = Array[Object]([ExtResource("2_khqe6"), ExtResource("3_jxc54"), ExtResource("4_hiecx")])
+AnimSpriteNode = NodePath("AnimatedSprite2D")
+StateMachineNode = NodePath("StateMachine")
+HurtboxNode = NodePath("HurtBox")
+HitboxNode = NodePath("Hitbox")
+HitBoxShapeNode = NodePath("Hitbox/CollisionShape2D")
+shaderTimerNode = NodePath("ShaderTimer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
