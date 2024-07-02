@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://dl7pa6yblu1ov" path="res://Resources/player_strength_stat.tres" id="8_xulig"]
 [ext_resource type="Script" path="res://Scripts/UI/EnemyCountLabel.cs" id="9_b80lw"]
 [ext_resource type="Texture2D" uid="uid://cea0sjbmg8q5r" path="res://Assets/UI/STRENGTH.png" id="9_d3tml"]
-[ext_resource type="Resource" uid="uid://rvasvh2djnac" path="res://Resources/player_gold.tres" id="9_ee6nj"]
+[ext_resource type="Resource" path="res://Resources/player_gold.tres" id="9_ee6nj"]
 [ext_resource type="Texture2D" uid="uid://cv1opbrr5msyf" path="res://Assets/UI/gold.png" id="11_maco1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q6o58"]
@@ -309,6 +309,7 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_gteji")
 text = "RESTART"
 
 [node name="Pause" type="PanelContainer" parent="." node_paths=PackedStringArray("ButtonNode")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
