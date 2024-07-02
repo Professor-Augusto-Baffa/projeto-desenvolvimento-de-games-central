@@ -1,2 +1,5 @@
 # INF1307-Game
- Game made in IN1307.
+Lucca Vieira Rocha - 2011342
+Felipe Gameleira - 2011xxx
+Marcello Nascif - 2011067
+
